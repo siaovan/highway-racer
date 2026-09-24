@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="320" viewBox="0 0 420 320">
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9fb"/><stop offset="0.32" stop-color="#cfd6dc"/><stop offset="0.72" stop-color="#929da6"/><stop offset="1" stop-color="#5c6670"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#263746"/><stop offset="1" stop-color="#06090c"/></linearGradient>
+  <linearGradient id="black" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222931"/><stop offset="1" stop-color="#050607"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#111418"/><stop offset=".5" stop-color="#42484f"/><stop offset="1" stop-color="#111418"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+<g filter="url(#shadow)"><ellipse cx="210" cy="288" rx="160" ry="18" fill="#000" opacity=".32"/><rect x="57" y="166" width="48" height="102" rx="18" fill="#090b0d"/><rect x="315" y="166" width="48" height="102" rx="18" fill="#090b0d"/><path d="M76 254 L74 126 Q79 87 124 69 L296 69 Q341 87 346 126 L344 254 Q306 283 253 292 L167 292 Q114 283 76 254Z" fill="url(#body)" stroke="#46505a" stroke-width="4"/><rect x="126" y="91" width="168" height="78" rx="16" fill="url(#glass)"/><g filter="url(#glow)" fill="#ff4242"><rect x="97" y="190" width="74" height="16" rx="6"/><rect x="249" y="190" width="74" height="16" rx="6"/></g><path d="M98 228 L322 228 L302 273 L118 273Z" fill="#0b0d10"/><rect x="176" y="211" width="68" height="24" rx="4" fill="#11171d"/></g>
+</svg>

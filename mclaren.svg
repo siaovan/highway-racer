@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+<defs>
+  <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7f9fb"/><stop offset="0.32" stop-color="#cfd6dc"/><stop offset="0.72" stop-color="#929da6"/><stop offset="1" stop-color="#5c6670"/></linearGradient>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#263746"/><stop offset="1" stop-color="#06090c"/></linearGradient>
+  <linearGradient id="black" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222931"/><stop offset="1" stop-color="#050607"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#111418"/><stop offset=".5" stop-color="#42484f"/><stop offset="1" stop-color="#111418"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000" flood-opacity=".55"/></filter>
+</defs>
+
+<g filter="url(#shadow)">
+ <ellipse cx="320" cy="316" rx="222" ry="22" fill="#000" opacity=".32"/>
+ <g fill="#090b0d"><rect x="91" y="181" width="46" height="106" rx="22"/><rect x="503" y="181" width="46" height="106" rx="22"/></g>
+ <path d="M109 260 Q86 218 106 159 Q128 93 211 63 Q320 30 429 63 Q512 93 534 159 Q554 218 531 260 Q482 306 407 319 L233 319 Q158 306 109 260Z" fill="url(#body)" stroke="#465058" stroke-width="5"/>
+ <path d="M183 115 Q229 65 320 59 Q411 65 457 115 L418 151 L222 151Z" fill="url(#glass)" stroke="#11181f" stroke-width="5"/>
+ <path d="M112 166 Q170 142 236 158 L210 214 Q156 215 120 197Z" fill="#0b0e12"/><path d="M528 166 Q470 142 404 158 L430 214 Q484 215 520 197Z" fill="#0b0e12"/>
+ <g filter="url(#glow)" fill="none" stroke="#ff3c38" stroke-width="12" stroke-linecap="round"><path d="M137 179 Q181 178 214 205"/><path d="M503 179 Q459 178 426 205"/></g>
+ <path d="M132 231 L220 224 L251 249 L389 249 L420 224 L508 231 L484 295 L412 310 L228 310 L156 295Z" fill="#090b0e"/>
+ <g fill="#2b2f33" stroke="#737980" stroke-width="3"><ellipse cx="287" cy="271" rx="19" ry="13"/><ellipse cx="353" cy="271" rx="19" ry="13"/></g>
+ <rect x="279" y="220" width="82" height="31" rx="5" fill="#0d1115" stroke="#6f7881" stroke-width="3"/>
+ <text x="320" y="241" text-anchor="middle" fill="#e8eef2" font-size="16" font-family="Arial" font-weight="700">720S</text>
+ <path d="M125 132 Q176 83 236 68" fill="none" stroke="#fff" stroke-opacity=".44" stroke-width="6"/>
+</g>
+
+</svg>

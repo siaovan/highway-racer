@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#070b12" />
+  <meta name="description" content="Highway Racer V3.2 — fully offline cinematic coastal arcade racer." />
+  <title>Highway Racer V3.2.1 — Offline</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div id="app">
+  <canvas id="gameCanvas" aria-label="Highway Racer V3 game"></canvas>
+  <div class="screen-vignette"></div>
+  <div id="damageFlash" class="damage-flash"></div>
+
+  <section id="mainMenu" class="screen active menu-screen">
+    <div class="menu-shade"></div>
+    <div class="menu-content">
+      <div class="edition">OFFLINE ARCADE EDITION</div>
+      <h1 class="brand"><span>HIGHWAY</span><b>RACER <i>V3</i></b></h1>
+      <p class="subtitle">Mountain roads. City lights. Real-inspired machines. Zero internet required.</p>
+      <div class="menu-buttons">
+        <button id="playBtn" class="menu-button primary"><span class="ico">▶</span><span>RACE</span><small>Start a new run</small></button>
+        <button id="garageBtn" class="menu-button"><span class="ico">▣</span><span>GARAGE</span><small>Choose your machine</small></button>
+        <button id="settingsBtn" class="menu-button"><span class="ico">⚙</span><span>SETTINGS</span><small>Controls & effects</small></button>
+        <button id="howBtn" class="menu-button"><span class="ico">ⓘ</span><span>HOW TO PLAY</span><small>Learn the scoring system</small></button>
+      </div>
+      <div class="menu-footer"><span>BEST SCORE <b id="menuBest">0</b></span><span id="menuCar">LAMBORGHINI AVENTADOR SVJ</span></div>
+    </div>
+    <div class="menu-car-label"><span>SELECTED CAR</span><strong id="heroCarName">AVENTADOR SVJ</strong></div>
+  </section>
+
+  <section id="difficultyScreen" class="screen modal-screen">
+    <div class="modal wide">
+      <button class="back" data-back>←</button>
+      <p class="kicker">RACE SETUP</p>
+      <h2>Choose intensity</h2>
+      <div class="difficulty-grid">
+        <button data-difficulty="0"><em>01</em><strong>CRUISE</strong><span>Light traffic · forgiving pace</span></button>
+        <button data-difficulty="1" class="recommended"><em>02</em><strong>SPORT</strong><span>Balanced traffic · ideal starting point</span></button>
+        <button data-difficulty="2"><em>03</em><strong>RACE</strong><span>Faster traffic · active lane changes</span></button>
+        <button data-difficulty="3" class="danger"><em>04</em><strong>INSANE</strong><span>Heavy traffic · maximum pressure</span></button>
+      </div>
+      <div class="setup-tip"><b>TIP</b> Near misses refill nitro and multiply your score.</div>
+    </div>
+  </section>
+
+  <section id="garageScreen" class="screen garage-screen">
+    <div class="garage-topbar"><button class="back inline" data-back>←</button><div><span>GARAGE</span><strong>CHOOSE YOUR MACHINE</strong></div><div class="garage-best">BEST <b id="garageBest">0</b></div></div>
+    <div class="garage-layout">
+      <div class="garage-stage">
+        <canvas id="garageCanvas" width="1000" height="600"></canvas>
+        <div class="selected-badge"><span id="selectedBrand">LAMBORGHINI</span><strong id="selectedModel">AVENTADOR SVJ</strong></div>
+      </div>
+      <aside class="garage-info">
+        <p id="carDescription">V12-inspired wedge-shaped supercar with extreme high-speed stability.</p>
+        <div class="stats">
+          <div><span>TOP SPEED</span><i><b id="statSpeed"></b></i><strong id="statSpeedNum">96</strong></div>
+          <div><span>HANDLING</span><i><b id="statHandling"></b></i><strong id="statHandlingNum">82</strong></div>
+          <div><span>STABILITY</span><i><b id="statStability"></b></i><strong id="statStabilityNum">84</strong></div>
+        </div>
+        <div class="paint-label">PAINT</div><div id="paintOptions" class="paint-options"></div>
+      </aside>
+    </div>
+    <div id="carOptions" class="car-carousel"></div>
+  </section>
+
+  <section id="settingsScreen" class="screen modal-screen">
+    <div class="modal settings-modal">
+      <button class="back" data-back>←</button>
+      <p class="kicker">SETTINGS</p><h2>Make it yours</h2>
+      <label class="setting"><div><strong>Engine audio</strong><span>Procedural engine, whoosh and crash sounds</span></div><input id="audioToggle" type="checkbox" checked><i></i></label>
+      <label class="setting"><div><strong>Camera shake</strong><span>Impact and high-speed feedback</span></div><input id="shakeToggle" type="checkbox" checked><i></i></label>
+      <label class="setting"><div><strong>Motion effects</strong><span>Speed lines, camera lean and road streaks</span></div><input id="motionToggle" type="checkbox" checked><i></i></label>
+      <label class="setting"><div><strong>Weather</strong><span>Dynamic rain during longer runs</span></div><input id="rainToggle" type="checkbox" checked><i></i></label>
+      <label class="setting"><div><strong>Forgiving collision</strong><span>Smaller core hitbox; visual overlap is allowed</span></div><input id="assistToggle" type="checkbox" checked><i></i></label>
+      <label class="setting slider"><div><strong>Steering sensitivity</strong><span>Keyboard, mouse and touch</span></div><input id="sensitivity" type="range" min="70" max="140" value="100"></label>
+      <p class="note">Keyboard: A/D or ←/→ · Nitro: Space/Shift · Pause: Esc/P · Mobile controls appear automatically.</p>
+    </div>
+  </section>
+
+  <section id="howScreen" class="screen modal-screen">
+    <div class="modal how-modal">
+      <button class="back" data-back>←</button>
+      <p class="kicker">HOW TO PLAY</p><h2>Drive brave, not reckless.</h2>
+      <div class="how-grid">
+        <article><b>01</b><strong>STEER</strong><span>Use A/D, arrows, mouse drag, or mobile steering zones.</span></article>
+        <article><b>02</b><strong>NEAR MISS</strong><span>Pass close without touching. Your core hitbox is intentionally forgiving.</span></article>
+        <article><b>03</b><strong>BUILD COMBO</strong><span>Chain overtakes and near misses to push the multiplier up to x9.</span></article>
+        <article><b>04</b><strong>USE NITRO</strong><span>Near misses refill nitro. Hold Space or Shift for a temporary speed boost.</span></article>
+      </div>
+    </div>
+  </section>
+
+  <div id="hud" class="hud hidden">
+    <div class="hud-left">
+      <div class="hud-stat"><span>SCORE</span><strong id="scoreVal">0</strong><small>BEST <b id="bestVal">0</b></small></div>
+      <div class="near-box"><span>NEAR MISS</span><strong id="nearVal">0</strong></div>
+    </div>
+    <div class="top-center"><span id="locationVal">MOUNTAIN PASS</span><small id="weatherVal">SUNSET · CLEAR</small></div>
+    <div class="hud-right"><div class="hud-stat right"><span>DISTANCE</span><strong id="distanceVal">0.0 KM</strong><small>COMBO <b id="comboVal">x1</b></small></div><button id="pauseBtn" class="pause">Ⅱ</button></div>
+
+    <div class="mini-map"><span class="north">N</span><div class="road-line"></div><div id="radarDots" class="radar-dots"></div><div class="player-arrow">▲</div></div>
+    <div class="nitro"><div class="nitro-label"><span>NITRO</span><b id="nitroVal">100%</b></div><div class="nitro-track"><i id="nitroBar"></i></div><small>SPACE / SHIFT</small></div>
+    <div id="speedometer" class="speedometer"><div class="speed-inner"><span class="gear" id="gearVal">3</span><strong id="speedVal">0</strong><small>KM/H</small></div><div class="speed-caption">GT</div></div>
+  </div>
+
+  <div id="feedback" class="feedback"></div>
+  <div id="milestone" class="milestone"></div>
+  <div id="nitroGlow" class="nitro-glow"></div>
+
+  <section id="pauseScreen" class="screen modal-screen">
+    <div class="modal pause-modal"><p class="kicker">PAUSED</p><h2>Run on hold.</h2><button id="resumeBtn" class="action primary">RESUME</button><button id="restartPauseBtn" class="action">RESTART</button><button id="quitPauseBtn" class="action">MAIN MENU</button></div>
+  </section>
+
+  <section id="gameOverScreen" class="screen gameover-screen">
+    <div class="crash-light"></div>
+    <div class="gameover-panel">
+      <p class="crashed">CRASHED</p>
+      <div class="result-row"><span>SCORE</span><strong id="finalScore">0</strong></div>
+      <div class="result-row"><span>BEST</span><strong id="finalBest">0</strong></div>
+      <div class="result-row"><span>DISTANCE</span><strong id="finalDistance">0.0 KM</strong></div>
+      <div class="result-row"><span>NEAR MISSES</span><strong id="finalNear">0</strong></div>
+      <div class="result-row"><span>MAX COMBO</span><strong id="finalCombo">x1</strong></div>
+      <button id="retryBtn" class="action primary">RETRY</button><button id="gameOverMenuBtn" class="action">MAIN MENU</button>
+    </div>
+  </section>
+
+  <div id="mobileControls" class="mobile-controls hidden"><button id="leftTouch"><b>‹</b><span>LEFT</span></button><button id="nitroTouch" class="boost"><b>⚡</b><span>NITRO</span></button><button id="rightTouch"><b>›</b><span>RIGHT</span></button></div>
+</div>
+<script src="./script.js"></script>
+</body>
+</html>
